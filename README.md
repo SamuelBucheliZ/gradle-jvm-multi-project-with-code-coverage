@@ -1,0 +1,1 @@
+# gradle-jvm-multi-project-with-code-coverage
