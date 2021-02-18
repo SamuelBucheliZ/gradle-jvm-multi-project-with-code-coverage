@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation project(':list')
     implementation project(':utilities')
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.8.RELEASE'
 }
 
 application {
