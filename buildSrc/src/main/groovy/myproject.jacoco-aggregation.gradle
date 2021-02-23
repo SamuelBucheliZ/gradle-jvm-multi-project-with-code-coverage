@@ -4,9 +4,10 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
+// A resolvable configuration to collect source output code
 def sourcesOutputPath = configurations.create("sourcesOutputPath") {
     visible = false
     canBeResolved = true
@@ -18,6 +19,7 @@ def sourcesOutputPath = configurations.create("sourcesOutputPath") {
         attribute(DocsType.DOCS_TYPE_ATTRIBUTE, objects.named(DocsType, 'source-output-folders'))
     }
 }
+
 // A resolvable configuration to collect source code
 def sourcesPath = configurations.create("sourcesPath") {
     visible = false

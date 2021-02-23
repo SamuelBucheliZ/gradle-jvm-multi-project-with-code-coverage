@@ -7,7 +7,7 @@ version = '1.0.2'
 group = 'org.gradle.sample'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 tasks.named("test") {
@@ -24,7 +24,7 @@ tasks.named("jacocoTestReport") {
     enabled = false
 }
 
-// Share sources folder with other projects for aggregated JaCoCo reports
+// Share sources output folder with other projects for aggregated JaCoCo reports
 configurations.create('transitiveSourceOutputsElements') {
     visible = false
     canBeResolved = false
@@ -37,6 +37,7 @@ configurations.create('transitiveSourceOutputsElements') {
     }
     outgoing.artifact(sourceSets.main.java.outputDir)
 }
+
 // Share sources folder with other projects for aggregated JaCoCo reports
 configurations.create('transitiveSourcesElements') {
     visible = false

@@ -1,11 +1,16 @@
 # gradle-jvm-multi-project-with-code-coverage
 
-This is basically a copy of https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples/java/jvm-multi-project-with-code-coverage but with Spring Boot added to demonstrate a problem with JaCoCo code coverage report generation:
+This is an example on how to set up a Gradle Multi-Project Java build using Spring Boot with JaCoCo code coverage reports.
+This was created with the help of https://github.com/pbarnoux based on the discussion in 
+https://discuss.gradle.org/t/gradle-multi-project-build-with-jacoco-code-coverage-and-spring-boot-fails/39091/6
+
+Originally, it basically was a copy of https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples/java/jvm-multi-project-with-code-coverage 
+but with Spring Boot added to demonstrate a problem with JaCoCo code coverage report generation:
 
 ```
 ./gradlew clean build codeCoverage -stacktrace
 ```
-will give
+was giving
 ```
 > Task :code-coverage-report:codeCoverageReport FAILED
 
