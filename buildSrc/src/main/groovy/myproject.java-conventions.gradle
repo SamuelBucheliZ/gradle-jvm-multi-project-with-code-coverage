@@ -35,7 +35,10 @@ configurations.create('transitiveSourceOutputsElements') {
         attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, Category.DOCUMENTATION))
         attribute(DocsType.DOCS_TYPE_ATTRIBUTE, objects.named(DocsType, 'source-output-folders'))
     }
-    outgoing.artifact(sourceSets.main.java.outputDir)
+    // Use main.output if you have groovy, scala or kotlin other than java in your project
+    sourceSets.main.output.classesDirs.forEach {
+        outgoing.artifact(it)
+    }
 }
 
 // Share sources folder with other projects for aggregated JaCoCo reports
@@ -49,7 +52,7 @@ configurations.create('transitiveSourcesElements') {
         attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, Category.DOCUMENTATION))
         attribute(DocsType.DOCS_TYPE_ATTRIBUTE, objects.named(DocsType, 'source-folders'))
     }
-    sourceSets.main.java.srcDirs.forEach {
+    sourceSets.main.output.classesDirs.forEach {
         outgoing.artifact(it)
     }
 }
