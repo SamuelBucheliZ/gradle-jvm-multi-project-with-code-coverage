@@ -1,5 +1,7 @@
 # gradle-jvm-multi-project-with-code-coverage
 
+![Java CI with Gradle State](https://github.com/SamuelBucheliZ/gradle-jvm-multi-project-with-code-coverage/actions/workflows/gradle.yml/badge.svg)
+
 This is an example on how to set up a Gradle Multi-Project Java build using Spring Boot with JaCoCo code coverage reports.
 This was created with the help of https://github.com/pbarnoux based on the discussion in 
 https://discuss.gradle.org/t/gradle-multi-project-build-with-jacoco-code-coverage-and-spring-boot-fails/39091/6
