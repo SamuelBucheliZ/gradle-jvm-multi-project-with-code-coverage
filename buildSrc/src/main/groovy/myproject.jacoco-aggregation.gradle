@@ -7,19 +7,6 @@ repositories {
     mavenCentral()
 }
 
-// A resolvable configuration to collect source output code
-def sourcesOutputPath = configurations.create("sourcesOutputPath") {
-    visible = false
-    canBeResolved = true
-    canBeConsumed = false
-    extendsFrom(configurations.implementation)
-    attributes {
-        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, Usage.JAVA_RUNTIME))
-        attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, Category.DOCUMENTATION))
-        attribute(DocsType.DOCS_TYPE_ATTRIBUTE, objects.named(DocsType, 'source-output-folders'))
-    }
-}
-
 // A resolvable configuration to collect source code
 def sourcesPath = configurations.create("sourcesPath") {
     visible = false
@@ -48,7 +35,7 @@ def coverageDataPath = configurations.create("coverageDataPath") {
 
 // Task to gather code coverage from multiple subprojects
 def codeCoverageReport = tasks.register('codeCoverageReport', JacocoReport) {
-    additionalClassDirs(sourcesOutputPath.incoming.artifactView { lenient(true) }.files)
+    additionalClassDirs(configurations.runtimeClasspath.filter{it.path.contains(rootProject.name)  })
     additionalSourceDirs(sourcesPath.incoming.artifactView { lenient(true) }.files)
     executionData(coverageDataPath.incoming.artifactView { lenient(true) }.files.filter { it.exists() })
 
