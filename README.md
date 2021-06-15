@@ -1,8 +1,24 @@
 # gradle-jvm-multi-project-with-code-coverage
 
-This is an example on how to set up a Gradle Multi-Project Java build using Spring Boot with JaCoCo code coverage reports.
+This is an example on how to set up a Gradle Multi-Project Java build using Spring Boot with JaCoCo code coverage reports
+and SonarQube integration.
+
 This was created with the help of https://github.com/pbarnoux based on the discussion in 
 https://discuss.gradle.org/t/gradle-multi-project-build-with-jacoco-code-coverage-and-spring-boot-fails/39091/6
+
+To test it, first start a SonarQube instance, e.g., locally with Docker by using
+```
+docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
+```
+
+Then run
+```
+./gradlew clean build codeCoverageReport sonarqube
+```
+
+Now, you can navigate to http://localhost:9000/ and should see the code coverage reported in SonarQube.
+
+## History
 
 Originally, it basically was a copy of https://github.com/gradle/gradle/tree/master/subprojects/docs/src/samples/java/jvm-multi-project-with-code-coverage 
 but with Spring Boot added to demonstrate a problem with JaCoCo code coverage report generation:
